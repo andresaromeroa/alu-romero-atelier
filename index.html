@@ -7,7 +7,9 @@
 <meta name="description" content="Alu Romero, artiste mexicaine à Montréal. Œuvres en étain repoussé à la main : cœurs sacrés, corps, fleurs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,480;0,9..144,560;1,9..144,420;1,9..144,480&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,480;0,9..144,560;1,9..144,420;1,9..144,480&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,480;0,9..144,560;1,9..144,420;1,9..144,480&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap"></noscript>
+<link rel="preload" as="image" href="images/hero-1400.webp" imagesrcset="images/hero-800.webp 800w, images/hero-1400.webp 1400w" imagesizes="(max-width:860px) 100vw, 54vw">
 <style>
   :root{
     --sand:#CCC2A9; --sand-deep:#BFB399; --sand-light:#D9D1BB;
@@ -152,7 +154,7 @@
 
 <nav id="nav">
   <a class="brand" href="#top">
-    <img src="images/logo-mark.png" alt="Alu Romero Atelier">
+    <img src="images/logo-mark.png" alt="Alu Romero Atelier" width="120" height="91">
     <div><b>alu romero</b><span>atelier · Montréal</span></div>
   </a>
   <div class="navright">
@@ -171,13 +173,13 @@
 
 <header class="hero" id="top">
   <div class="hero-content">
-    <img class="hero-mark" src="images/logo-mark.png" alt="">
+    <img class="hero-mark" src="images/logo-mark.png" alt="" width="120" height="91">
     <div class="eyebrow" data-i18n="hero.eyebrow"></div>
     <h1 data-i18n-html="hero.title"></h1>
     <p class="hero-sub" data-i18n="hero.sub"></p>
   </div>
   <div class="hero-img">
-    <img src="images/hero.jpg" alt="" data-i18n-alt="hero.alt">
+    <img src="images/hero-1400.webp" srcset="images/hero-800.webp 800w, images/hero-1400.webp 1400w" sizes="(max-width:860px) 100vw, 54vw" width="800" height="534" alt="" data-i18n-alt="hero.alt" fetchpriority="high">
   </div>
   <div class="scroll-cue"><span class="stem"></span><span data-i18n="hero.scroll"></span></div>
 </header>
@@ -215,10 +217,10 @@
       </div>
     </div>
     <div class="texture-grid reveal">
-      <div class="tx"><img src="images/tx1.jpg" alt="" loading="lazy"></div>
-      <div class="tx"><img src="images/tx2.jpg" alt="" loading="lazy"></div>
-      <div class="tx"><img src="images/tx3.jpg" alt="" loading="lazy"></div>
-      <div class="tx"><img src="images/tx4.jpg" alt="" loading="lazy"></div>
+      <div class="tx"><img src="images/tx1.webp" alt="" loading="lazy" width="700" height="700"></div>
+      <div class="tx"><img src="images/tx2.webp" alt="" loading="lazy" width="700" height="700"></div>
+      <div class="tx"><img src="images/tx3.webp" alt="" loading="lazy" width="700" height="700"></div>
+      <div class="tx"><img src="images/tx4.webp" alt="" loading="lazy" width="700" height="700"></div>
     </div>
   </div>
 </section>
@@ -261,7 +263,7 @@
         <div class="eyebrow" data-i18n="contact.eyebrow"></div>
         <h2 data-i18n="contact.title"></h2>
       </div>
-      <img class="contact-logo" src="images/logo-full.png" alt="Alu Romero Atelier">
+      <img class="contact-logo" src="images/logo-full.png" alt="Alu Romero Atelier" width="395" height="400" loading="lazy">
     </div>
     <div class="contact-row reveal">
       <div class="contact-item"><div class="eyebrow">INSTAGRAM</div><a class="big" href="https://www.instagram.com/aluromero.atelier" target="_blank" rel="noopener">@aluromero.atelier</a></div>
@@ -339,16 +341,18 @@ const I18N = {
 
 // [id, title, mediumKey, art image, room image, span]
 const PIECES = [
-  ['el-beso','El Beso','medium.framed','images/el-beso-frame.jpg','images/el-beso-room.jpg','wide'],
-  ['sagrado-corazon','Sagrado Corazón','medium.panel','images/sagrado-corazon.jpg','images/sagrado-corazon-room.jpg',''],
-  ['corazon-anatomico','Corazón Anatómico','medium.beads','images/corazon-anatomico.jpg','images/corazon-anatomico-room.jpg',''],
-  ['contemplacion','Contemplación','medium.wood','images/contemplacion.jpg','images/contemplacion-room.jpg',''],
-  ['marea','Marea','medium.framed','images/marea.jpg','images/marea-room.jpg',''],
-  ['corazon-floral','Corazón Floral','medium.panel','images/corazon-floral.jpg','images/corazon-floral-room.jpg',''],
-  ['alcatraces','Alcatraces','medium.panel','images/alcatraces-room.jpg',null,''],
-  ['sinfonia','Sinfonía Interior','medium.beads','images/sinfonia.jpg','images/sinfonia-room.jpg','wide'],
+  ['el-beso','El Beso','medium.framed','el-beso-frame','el-beso-room','wide'],
+  ['sagrado-corazon','Sagrado Corazón','medium.panel','sagrado-corazon','sagrado-corazon-room',''],
+  ['corazon-anatomico','Corazón Anatómico','medium.beads','corazon-anatomico','corazon-anatomico-room',''],
+  ['contemplacion','Contemplación','medium.wood','contemplacion','contemplacion-room',''],
+  ['marea','Marea','medium.framed','marea','marea-room',''],
+  ['corazon-floral','Corazón Floral','medium.panel','corazon-floral','corazon-floral-room',''],
+  ['alcatraces','Alcatraces','medium.panel','alcatraces-room',null,''],
+  ['sinfonia','Sinfonía Interior','medium.beads','sinfonia','sinfonia-room','wide'],
 ];
 
+const DIMS = {"hero": [800, 534], "el-beso-frame": [800, 533], "el-beso-room": [800, 640], "sagrado-corazon": [800, 1006], "sagrado-corazon-room": [800, 1146], "corazon-anatomico": [800, 1067], "corazon-anatomico-room": [800, 1000], "corazon-floral": [800, 966], "corazon-floral-room": [800, 883], "contemplacion": [800, 1000], "contemplacion-room": [800, 639], "alcatraces-room": [800, 1045], "sinfonia": [800, 1023], "sinfonia-room": [800, 774], "marea": [800, 1056], "marea-room": [800, 856], "logo-full": [395, 400], "logo-mark": [120, 91]};
+const srcset = n => `images/${n}-800.webp 800w, images/${n}-1400.webp 1400w`;
 let lang = 'fr';
 const gallery = document.getElementById('gallery');
 PIECES.forEach((p,i) => {
@@ -357,8 +361,8 @@ PIECES.forEach((p,i) => {
   el.className = 'piece' + (span?' '+span:'');
   el.dataset.mk = mk;
   el.innerHTML = `
-    <img class="art" src="${art}" alt="${title}" loading="lazy">
-    ${room ? `<img class="room" src="${room}" alt="${title}" loading="lazy">` : ''}
+    <img class="art" src="images/${art}-800.webp" srcset="${srcset(art)}" sizes="${span?'(max-width:460px) 100vw, (max-width:720px) 100vw, 60vw':'(max-width:460px) 100vw, (max-width:720px) 50vw, 30vw'}" width="${DIMS[art][0]}" height="${DIMS[art][1]}" alt="${title}" loading="${i<3?'eager':'lazy'}">
+    ${room ? `<img class="room" src="images/${room}-800.webp" srcset="${srcset(room)}" sizes="${span?'60vw':'30vw'}" width="${DIMS[room][0]}" height="${DIMS[room][1]}" alt="${title}" loading="lazy">` : ''}
     <div class="hallmark">Nº&nbsp;${String(i+1).padStart(2,'0')}</div>
     <div class="scrim"></div>
     <div class="cap"><div class="title">${title}</div><div class="meta"></div></div>`;
