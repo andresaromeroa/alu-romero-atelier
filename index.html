@@ -11,7 +11,7 @@
 <style>
   :root{
     --sand:#CCC2A9; --sand-deep:#BFB399; --sand-light:#D9D1BB;
-    --ink:#141210; --ink-soft:#5C5344;
+    --ink:#141210; --ink-soft:#463F32;
     --oxblood:#7C231D;
     --line:rgba(20,18,16,0.16); --line-strong:rgba(20,18,16,0.34);
   }
@@ -64,11 +64,11 @@
   .scroll-cue .stem::after{content:"";position:absolute;left:-100%;top:0;height:100%;width:100%;background:var(--oxblood);animation:stemMove 2.4s ease-in-out infinite;}
   @keyframes stemMove{0%{left:-100%;}60%{left:100%;}100%{left:100%;}}
   @keyframes fadeIn{to{opacity:1;}}
-  @media (max-width:860px){.hero{grid-template-columns:1fr;min-height:auto;}.hero-content{padding-top:110px;order:2;}.hero-img{order:1;min-height:56vh;}.scroll-cue{display:none;}}
+  @media (max-width:860px){.hero{grid-template-columns:1fr;min-height:auto;}.hero-content{padding-top:36px;padding-bottom:56px;order:2;justify-content:flex-start;}.hero-mark{margin-bottom:28px;}.hero-content .eyebrow{margin-bottom:16px;}.hero-img{order:1;min-height:56vh;}.scroll-cue{display:none;}}
 
   /* STATEMENT */
-  .statement{padding:clamp(90px,14vw,160px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .statement blockquote{font-family:'Fraunces',serif;font-style:italic;font-weight:420;font-size:clamp(1.5rem,3.6vw,2.6rem);line-height:1.42;max-width:22ch;}
+  .statement{padding:clamp(90px,14vw,160px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;}
+  .statement blockquote{font-family:'Fraunces',serif;font-style:italic;font-weight:420;font-size:clamp(1.5rem,3.6vw,2.6rem);line-height:1.42;max-width:22ch;margin:0 auto;}
   .statement blockquote span{color:var(--oxblood);}
   .statement cite{display:block;margin-top:28px;font-family:'Space Mono',monospace;font-style:normal;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);}
 
@@ -182,6 +182,7 @@
   <div class="scroll-cue"><span class="stem"></span><span data-i18n="hero.scroll"></span></div>
 </header>
 
+<main>
 <section class="statement">
   <div class="wrap">
     <blockquote data-i18n-html="statement.quote"></blockquote>
@@ -250,6 +251,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <section id="contact" class="contact">
   <div class="wrap">
