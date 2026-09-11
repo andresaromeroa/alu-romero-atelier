@@ -210,9 +210,9 @@
       <p data-i18n="process.p1"></p>
       <p data-i18n="process.p2"></p>
       <div class="tools">
-        <div class="tool"><b>Buril</b><span data-i18n="tools.buril"></span></div>
-        <div class="tool"><b>Perfilador</b><span data-i18n="tools.perfilador"></span></div>
-        <div class="tool"><b>Esfumino</b><span data-i18n="tools.esfumino"></span></div>
+        <div class="tool"><b data-i18n="tools.buril_k"></b><span data-i18n="tools.buril"></span></div>
+        <div class="tool"><b data-i18n="tools.perfilador_k"></b><span data-i18n="tools.perfilador"></span></div>
+        <div class="tool"><b data-i18n="tools.esfumino_k"></b><span data-i18n="tools.esfumino"></span></div>
         <div class="tool"><b data-i18n="tools.wood_k"></b><span data-i18n="tools.wood"></span></div>
       </div>
     </div>
@@ -268,7 +268,7 @@
     <div class="contact-row reveal">
       <div class="contact-item"><div class="eyebrow">INSTAGRAM</div><a class="big" href="https://www.instagram.com/aluromero.atelier" target="_blank" rel="noopener">@aluromero.atelier</a></div>
       <div class="contact-item"><div class="eyebrow" data-i18n="contact.email"></div><a class="big" href="mailto:atelier@aluromero.com">atelier@aluromero.com</a></div>
-      <div class="contact-item"><div class="eyebrow" data-i18n="contact.studio"></div><div class="big" style="border:none;padding-bottom:0;">Montréal, Québec</div></div>
+      <div class="contact-item"><div class="eyebrow" data-i18n="contact.studio"></div><div class="big" style="border:none;padding-bottom:0;" data-i18n="contact.city"></div></div>
     </div>
     <footer>
       <div>© 2026 Alu Romero Atelier</div>
@@ -294,17 +294,17 @@ const I18N = {
     'process.eyebrow':'LA TECHNIQUE','process.title':"Le repoussé — travaillé entièrement depuis l'envers.",
     'process.p1':"Le repoussé est une technique d'ornementation du métal dont les racines remontent à plusieurs millénaires. La feuille est travaillée par l'arrière : le marteau et une famille d'outils à bout rond font monter le relief depuis l'envers, tandis que des outils plus fins précisent le détail sur l'endroit. Rien n'est retiré, rien n'est ajouté — l'image existe déjà dans la feuille plate, elle attend d'être poussée vers l'avant.",
     'process.p2':"Au Mexique, cette technique vit depuis longtemps dans l'art votif : cœurs sacrés, milagros et ex-voto travaillés dans l'étain. L'atelier d'Alu Romero porte cet héritage dans un registre contemporain — les mêmes outils à main, tournés vers le corps féminin, les fleurs et les formes du quotidien, puis montés sur bois de récupération, cadre ou miroir.",
-    'tools.buril':'— trace et affine les lignes les plus fines','tools.perfilador':'— définit le contour de chaque forme','tools.esfumino':'— adoucit et fond la surface en relief','tools.wood_k':'Bois de récupération','tools.wood':'— le support des pièces faites pour vivre au mur',
+    'tools.buril_k':'Burin','tools.perfilador_k':'Profileur','tools.esfumino_k':'Estompe','tools.buril':'— trace et affine les lignes les plus fines','tools.perfilador':'— définit le contour de chaque forme','tools.esfumino':'— adoucit et fond la surface en relief','tools.wood_k':'Bois de récupération','tools.wood':'— le support des pièces faites pour vivre au mur',
     'about.eyebrow':"L'ARTISTE",'about.title':'Des mains mexicaines, la lumière de Montréal.',
     'about.p1':"Alu Romero est une artiste mexicaine qui vit et travaille à Montréal. Sa pratique explore la poésie du métal à travers l'étain repoussé à la main — une technique lente et entièrement manuelle, qu'elle fait passer de la tradition votive mexicaine à des pièces contemporaines de grand format pour le mur.",
     'about.p2':"Son travail navigue entre plusieurs registres : cœurs sacrés et fleurs rendus avec la franchise de l'art populaire, études du corps d'une sensualité discrète, portraits et scènes intimes — tous soulevés de la même feuille d'étain plate, à la main, depuis l'envers.",
-    'about.quote':'« Artista mexicana en Montreal. La poesía del metal a través del estaño. »',
+    'about.quote':'« Artiste mexicaine à Montréal. La poésie du métal à travers l\'étain. »',
     'comm.eyebrow':'COMMANDES & PROFESSIONNELS','comm.title':'Une œuvre faite pour votre mur.',
     'comm.p':"Les pièces sont disponibles en originaux, et sur commande à l'échelle souhaitée pour les résidences privées et les projets de design.",
     'comm.c1t':'Format sur mesure','comm.c1p':"Panneaux dimensionnés pour un mur, une cage d'escalier ou une entrée précise, en concertation sur la composition et la finition.",
     'comm.c2t':'Options de montage','comm.c2p':"Sur bois de récupération, encadré ou intégré à un miroir — choisi selon la pièce où l'œuvre vivra.",
     'comm.c3t':'Designers & architectes','comm.c3p':"Les professionnels sont invités à s'informer sur les délais, les éditions et l'installation.",
-    'contact.eyebrow':'NOUS ÉCRIRE','contact.title':'Parlons de votre mur.','contact.email':'COURRIEL','contact.studio':'ATELIER',
+    'contact.eyebrow':'NOUS ÉCRIRE','contact.title':'Parlons de votre mur.','contact.email':'COURRIEL','contact.studio':'ATELIER','contact.city':'Montréal, Québec',
     'footer.tag':'Étain repoussé — entièrement fait à la main',
     'medium.wood':'Étain repoussé sur bois de récupération','medium.panel':'Étain repoussé sur panneau','medium.framed':'Étain repoussé, encadré','medium.beads':'Étain repoussé et perles sur bois'
   },
@@ -323,17 +323,17 @@ const I18N = {
     'process.eyebrow':'LA TÉCNICA','process.title':'El repujado — trabajado por completo desde el reverso.',
     'process.p1':'El repujado es una técnica de ornamentación del metal con raíces que se remontan a varios milenios. La lámina se trabaja por detrás: el martillo y una familia de herramientas de punta roma levantan el relieve desde el reverso, mientras herramientas más finas definen el detalle por el frente. Nada se quita y nada se añade: la imagen ya existe en la lámina plana, esperando ser empujada hacia adelante.',
     'process.p2':'En México, esta técnica vive desde hace mucho en el arte devocional: corazones sagrados, milagros y exvotos trabajados en estaño. El taller de Alu Romero lleva esa herencia a un registro contemporáneo: las mismas herramientas de mano, vueltas hacia el cuerpo femenino, las flores y las formas de lo cotidiano, montadas después sobre madera recuperada, marco o espejo.',
-    'tools.buril':'— traza y afina las líneas más finas','tools.perfilador':'— define el contorno de cada forma','tools.esfumino':'— suaviza y funde la superficie en relieve','tools.wood_k':'Madera recuperada','tools.wood':'— el soporte de las piezas hechas para vivir en la pared',
+    'tools.buril_k':'Buril','tools.perfilador_k':'Perfilador','tools.esfumino_k':'Esfumino','tools.buril':'— traza y afina las líneas más finas','tools.perfilador':'— define el contorno de cada forma','tools.esfumino':'— suaviza y funde la superficie en relieve','tools.wood_k':'Madera recuperada','tools.wood':'— el soporte de las piezas hechas para vivir en la pared',
     'about.eyebrow':'LA ARTISTA','about.title':'Manos mexicanas, luz de Montreal.',
     'about.p1':'Alu Romero es una artista mexicana que vive y trabaja en Montreal. Su práctica explora la poesía del metal a través del estaño repujado a mano: una técnica lenta y completamente manual que ella traslada de la tradición devocional mexicana a piezas contemporáneas de gran formato para la pared.',
     'about.p2':'Su obra se mueve entre varios registros: corazones sagrados y flores con la franqueza del arte popular, estudios del cuerpo de una sensualidad discreta, retratos y escenas íntimas, todos levantados de la misma lámina plana de estaño, a mano, desde el reverso.',
-    'about.quote':'« Artiste mexicaine à Montréal. La poésie du métal à travers l\'étain. »',
+    'about.quote':'«Artista mexicana en Montreal. La poesía del metal a través del estaño.»',
     'comm.eyebrow':'ENCARGOS & PROFESIONALES','comm.title':'Una obra hecha para tu pared.',
     'comm.p':'Las piezas están disponibles como originales y por encargo a la escala deseada para residencias privadas y proyectos de diseño.',
     'comm.c1t':'Formato a medida','comm.c1p':'Paneles dimensionados para una pared, una escalera o una entrada concreta, acordando composición y acabado.',
     'comm.c2t':'Opciones de montaje','comm.c2p':'Sobre madera recuperada, enmarcado o integrado a un espejo, según el espacio donde vivirá la obra.',
     'comm.c3t':'Diseñadores & arquitectos','comm.c3p':'Los profesionales pueden consultar plazos, ediciones e instalación.',
-    'contact.eyebrow':'ESCRÍBENOS','contact.title':'Hablemos de tu pared.','contact.email':'CORREO','contact.studio':'TALLER',
+    'contact.eyebrow':'ESCRÍBENOS','contact.title':'Hablemos de tu pared.','contact.email':'CORREO','contact.studio':'TALLER','contact.city':'Montreal, Quebec',
     'footer.tag':'Estaño repujado — hecho por completo a mano',
     'medium.wood':'Estaño repujado sobre madera recuperada','medium.panel':'Estaño repujado sobre panel','medium.framed':'Estaño repujado, enmarcado','medium.beads':'Estaño repujado y chaquira sobre madera'
   }
