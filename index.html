@@ -360,7 +360,9 @@
   .piece.in-situ img.room{opacity:1;}
   .piece.in-situ img.art{transform:scale(1.04);}
   .piece .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,16,0) 50%,rgba(20,18,16,0.88) 100%);opacity:0;transition:opacity .5s;}
-  .piece.in-situ .scrim,.piece:hover .scrim{opacity:1;}
+  .piece.in-situ .scrim,.piece:hover .scrim,.piece:focus-visible .scrim{opacity:1;}
+  .piece:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px;}
+  .piece:focus-visible .cap{transform:none;opacity:1;}
   .piece .cap{position:absolute;left:0;right:0;bottom:0;padding:20px 22px;transform:translateY(14px);opacity:0;transition:transform .5s,opacity .5s;color:var(--sand-light);}
   .piece.in-situ .cap,.piece:hover .cap{transform:none;opacity:1;}
   .piece .cap .title{font-family:'Fraunces',serif;font-style:italic;font-size:1.2rem;}
@@ -566,7 +568,7 @@
     <footer>
       <div>© 2026 Alu Romero Atelier</div>
       <div data-i18n="footer.tag">Étain repoussé — entièrement fait à la main</div>
-      <div class="legal-links"><a class="cookie-link" id="privacy-link" href="/confidentialite/" data-i18n="footer.privacy">Confidentialité</a><span aria-hidden="true">·</span><button type="button" class="cookie-link" id="cookie-settings" data-i18n="footer.cookies">Témoins (cookies)</button></div>
+      <div class="legal-links"><a class="cookie-link" id="privacy-link" href="/confidentialite/" data-i18n="footer.privacy">Confidentialité</a><span aria-hidden="true">·</span><a class="cookie-link" id="a11y-link" href="/confidentialite/#accessibilite" data-i18n="footer.a11y">Accessibilité</a><span aria-hidden="true">·</span><button type="button" class="cookie-link" id="cookie-settings" data-i18n="footer.cookies">Témoins (cookies)</button></div>
     </footer>
   </div>
 </section>
@@ -636,7 +638,7 @@ const I18N = {
     'comm.c3t':'Designers & architectes','comm.c3p':"Les professionnels sont invités à s'informer sur les délais, les éditions et l'installation.",
     'contact.eyebrow':'NOUS ÉCRIRE','contact.title':'Parlons de votre mur.','contact.email':'COURRIEL','contact.studio':'ATELIER','contact.city':'Montréal, Québec',
     'footer.tag':'Étain repoussé — entièrement fait à la main',
-    'meta.desc':'Alu Romero, artiste mexicaine à Montréal. Œuvres en étain repoussé à la main : cœurs sacrés, corps, fleurs.','alt.room':'vue en situation','mail.subject':'Demande via le site — œuvre ou commande','consent.text':'Avec votre accord, nous utilisons Google Analytics pour mesurer la fréquentation du site (pages vues, clics). Rien n\'est activé sans votre consentement.','consent.accept':'Accepter','consent.decline':'Refuser','footer.cookies':'Témoins (cookies)','footer.privacy':'Confidentialité','consent.more':'En savoir plus',
+    'meta.desc':'Alu Romero, artiste mexicaine à Montréal. Œuvres en étain repoussé à la main : cœurs sacrés, corps, fleurs.','alt.room':'vue en situation','mail.subject':'Demande via le site — œuvre ou commande','consent.text':'Avec votre accord, nous utilisons Google Analytics pour mesurer la fréquentation du site (pages vues, clics). Rien n\'est activé sans votre consentement.','consent.accept':'Accepter','consent.decline':'Refuser','footer.cookies':'Témoins (cookies)','footer.privacy':'Confidentialité','footer.a11y':'Accessibilité','a11y.toggle':'Appuyez pour voir l\'œuvre en situation.','consent.more':'En savoir plus',
     'medium.wood':'Étain repoussé sur bois de récupération','medium.panel':'Étain repoussé sur panneau','medium.framed':'Étain repoussé, encadré','medium.beads':'Étain repoussé et perles sur bois'
   },
   es: {
@@ -666,7 +668,7 @@ const I18N = {
     'comm.c3t':'Diseñadores & arquitectos','comm.c3p':'Los profesionales pueden consultar plazos, ediciones e instalación.',
     'contact.eyebrow':'ESCRÍBENOS','contact.title':'Hablemos de tu pared.','contact.email':'CORREO','contact.studio':'TALLER','contact.city':'Montreal, Quebec',
     'footer.tag':'Estaño repujado — hecho por completo a mano',
-    'meta.desc':'Alu Romero, artista mexicana en Montreal. Obras en estaño repujado a mano: corazones sagrados, cuerpos, flores.','alt.room':'vista en un espacio','mail.subject':'Consulta desde el sitio — obra o encargo','consent.text':'Con tu permiso, usamos Google Analytics para medir las visitas al sitio (páginas vistas, clics). No se activa nada sin tu consentimiento.','consent.accept':'Aceptar','consent.decline':'Rechazar','footer.cookies':'Cookies','footer.privacy':'Privacidad','consent.more':'Más información',
+    'meta.desc':'Alu Romero, artista mexicana en Montreal. Obras en estaño repujado a mano: corazones sagrados, cuerpos, flores.','alt.room':'vista en un espacio','mail.subject':'Consulta desde el sitio — obra o encargo','consent.text':'Con tu permiso, usamos Google Analytics para medir las visitas al sitio (páginas vistas, clics). No se activa nada sin tu consentimiento.','consent.accept':'Aceptar','consent.decline':'Rechazar','footer.cookies':'Cookies','footer.privacy':'Privacidad','footer.a11y':'Accesibilidad','a11y.toggle':'Pulsa para ver la obra en un espacio.','consent.more':'Más información',
     'medium.wood':'Estaño repujado sobre madera recuperada','medium.panel':'Estaño repujado sobre panel','medium.framed':'Estaño repujado, enmarcado','medium.beads':'Estaño repujado y chaquira sobre madera'
   }
 };
@@ -712,6 +714,18 @@ PIECES.forEach((p,i) => {
       if (!open) el.classList.add('in-situ');
     });
   }
+  if (room) {
+    // keyboard + screen reader access to the in-situ view
+    el.tabIndex = 0;
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-pressed', 'false');
+    el.addEventListener('keydown', e => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      el.click();
+    });
+    new MutationObserver(() => el.setAttribute('aria-pressed', el.classList.contains('in-situ'))).observe(el, { attributes: true, attributeFilter: ['class'] });
+  }
   gallery.appendChild(el);
 });
 
@@ -738,9 +752,11 @@ function applyLang(l){
     const title = el.querySelector('.cap .title').textContent, med = t[el.dataset.mk];
     el.querySelector('img.art').alt = `${title} — ${med}, Alu Romero`;
     const r = el.querySelector('img.room'); if (r) r.alt = `${title} — ${med}, ${t['alt.room']}`;
+    if (el.getAttribute('role') === 'button') el.setAttribute('aria-label', `${title} — ${med}. ${t['a11y.toggle']}`);
   });
   const priv = l === 'es' ? '/privacidad/' : '/confidentialite/';
   ['privacy-link','consent-more'].forEach(id => { const a = document.getElementById(id); if (a) a.href = priv; });
+  const a11y = document.getElementById('a11y-link'); if (a11y) a11y.href = priv + (l === 'es' ? '#accesibilidad' : '#accessibilite');
   const ml = document.getElementById('mail-link');
   if (ml) ml.href = 'mailto:atelier@aluromero.com?subject=' + encodeURIComponent(t['mail.subject']);
 }
