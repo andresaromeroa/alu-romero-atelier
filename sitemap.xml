@@ -22,4 +22,18 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://aluromero.com/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/"/>
   </url>
+  <url>
+    <loc>https://aluromero.com/confidentialite/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aluromero.com/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/confidentialite/"/>
+  </url>
+  <url>
+    <loc>https://aluromero.com/privacidad/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aluromero.com/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/confidentialite/"/>
+  </url>
 </urlset>

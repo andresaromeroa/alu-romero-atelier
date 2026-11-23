@@ -437,6 +437,9 @@
   .consent button{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;border:1px solid var(--sand);background:transparent;color:var(--sand-light);cursor:pointer;border-radius:2px;}
   .consent button.primary{background:var(--sand);color:var(--ink);}
   .consent button:focus-visible,.cookie-link:focus-visible{outline:2px solid var(--oxblood);outline-offset:2px;}
+  .legal-links{display:flex;gap:10px;align-items:center;}
+  .consent-more{margin-right:auto;align-self:center;font-size:.8rem;text-decoration:underline;text-underline-offset:3px;color:var(--sand-light);}
+  .consent-more:focus-visible{outline:2px solid var(--sand);outline-offset:2px;}
   .cookie-link{background:none;border:none;padding:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
 </style>
 </head>
@@ -563,7 +566,7 @@
     <footer>
       <div>© 2026 Alu Romero Atelier</div>
       <div data-i18n="footer.tag">Étain repoussé — entièrement fait à la main</div>
-      <button type="button" class="cookie-link" id="cookie-settings" data-i18n="footer.cookies">Témoins (cookies)</button>
+      <div class="legal-links"><a class="cookie-link" id="privacy-link" href="/confidentialite/" data-i18n="footer.privacy">Confidentialité</a><span aria-hidden="true">·</span><button type="button" class="cookie-link" id="cookie-settings" data-i18n="footer.cookies">Témoins (cookies)</button></div>
     </footer>
   </div>
 </section>
@@ -571,6 +574,7 @@
 <div class="consent" id="consent" role="dialog" aria-live="polite" aria-labelledby="consent-text" hidden>
   <p id="consent-text" data-i18n="consent.text">Avec votre accord, nous utilisons Google Analytics pour mesurer la fréquentation du site (pages vues, clics). Rien n'est activé sans votre consentement.</p>
   <div class="consent-btns">
+    <a class="consent-more" id="consent-more" href="/confidentialite/" data-i18n="consent.more">En savoir plus</a>
     <button type="button" id="consent-decline" data-i18n="consent.decline">Refuser</button>
     <button type="button" id="consent-accept" class="primary" data-i18n="consent.accept">Accepter</button>
   </div>
@@ -632,7 +636,7 @@ const I18N = {
     'comm.c3t':'Designers & architectes','comm.c3p':"Les professionnels sont invités à s'informer sur les délais, les éditions et l'installation.",
     'contact.eyebrow':'NOUS ÉCRIRE','contact.title':'Parlons de votre mur.','contact.email':'COURRIEL','contact.studio':'ATELIER','contact.city':'Montréal, Québec',
     'footer.tag':'Étain repoussé — entièrement fait à la main',
-    'meta.desc':'Alu Romero, artiste mexicaine à Montréal. Œuvres en étain repoussé à la main : cœurs sacrés, corps, fleurs.','alt.room':'vue en situation','mail.subject':'Demande via le site — œuvre ou commande','consent.text':'Avec votre accord, nous utilisons Google Analytics pour mesurer la fréquentation du site (pages vues, clics). Rien n\'est activé sans votre consentement.','consent.accept':'Accepter','consent.decline':'Refuser','footer.cookies':'Témoins (cookies)',
+    'meta.desc':'Alu Romero, artiste mexicaine à Montréal. Œuvres en étain repoussé à la main : cœurs sacrés, corps, fleurs.','alt.room':'vue en situation','mail.subject':'Demande via le site — œuvre ou commande','consent.text':'Avec votre accord, nous utilisons Google Analytics pour mesurer la fréquentation du site (pages vues, clics). Rien n\'est activé sans votre consentement.','consent.accept':'Accepter','consent.decline':'Refuser','footer.cookies':'Témoins (cookies)','footer.privacy':'Confidentialité','consent.more':'En savoir plus',
     'medium.wood':'Étain repoussé sur bois de récupération','medium.panel':'Étain repoussé sur panneau','medium.framed':'Étain repoussé, encadré','medium.beads':'Étain repoussé et perles sur bois'
   },
   es: {
@@ -662,7 +666,7 @@ const I18N = {
     'comm.c3t':'Diseñadores & arquitectos','comm.c3p':'Los profesionales pueden consultar plazos, ediciones e instalación.',
     'contact.eyebrow':'ESCRÍBENOS','contact.title':'Hablemos de tu pared.','contact.email':'CORREO','contact.studio':'TALLER','contact.city':'Montreal, Quebec',
     'footer.tag':'Estaño repujado — hecho por completo a mano',
-    'meta.desc':'Alu Romero, artista mexicana en Montreal. Obras en estaño repujado a mano: corazones sagrados, cuerpos, flores.','alt.room':'vista en un espacio','mail.subject':'Consulta desde el sitio — obra o encargo','consent.text':'Con tu permiso, usamos Google Analytics para medir las visitas al sitio (páginas vistas, clics). No se activa nada sin tu consentimiento.','consent.accept':'Aceptar','consent.decline':'Rechazar','footer.cookies':'Cookies',
+    'meta.desc':'Alu Romero, artista mexicana en Montreal. Obras en estaño repujado a mano: corazones sagrados, cuerpos, flores.','alt.room':'vista en un espacio','mail.subject':'Consulta desde el sitio — obra o encargo','consent.text':'Con tu permiso, usamos Google Analytics para medir las visitas al sitio (páginas vistas, clics). No se activa nada sin tu consentimiento.','consent.accept':'Aceptar','consent.decline':'Rechazar','footer.cookies':'Cookies','footer.privacy':'Privacidad','consent.more':'Más información',
     'medium.wood':'Estaño repujado sobre madera recuperada','medium.panel':'Estaño repujado sobre panel','medium.framed':'Estaño repujado, enmarcado','medium.beads':'Estaño repujado y chaquira sobre madera'
   }
 };
@@ -735,6 +739,8 @@ function applyLang(l){
     el.querySelector('img.art').alt = `${title} — ${med}, Alu Romero`;
     const r = el.querySelector('img.room'); if (r) r.alt = `${title} — ${med}, ${t['alt.room']}`;
   });
+  const priv = l === 'es' ? '/privacidad/' : '/confidentialite/';
+  ['privacy-link','consent-more'].forEach(id => { const a = document.getElementById(id); if (a) a.href = priv; });
   const ml = document.getElementById('mail-link');
   if (ml) ml.href = 'mailto:atelier@aluromero.com?subject=' + encodeURIComponent(t['mail.subject']);
 }
