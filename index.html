@@ -443,6 +443,29 @@
   .consent-more{margin-right:auto;align-self:center;font-size:.8rem;text-decoration:underline;text-underline-offset:3px;color:var(--sand-light);}
   .consent-more:focus-visible{outline:2px solid var(--sand);outline-offset:2px;}
   .cookie-link{background:none;border:none;padding:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+  /* contact form */
+  .contact-form{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:28px clamp(24px,4vw,48px);max-width:900px;}
+  .contact-form .full,.form-intro{grid-column:1/-1;}
+  .form-intro{font-size:1.05rem;color:var(--ink-soft);}
+  .field label{display:block;font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;}
+  .field input,.field select,.field textarea{width:100%;font:inherit;font-size:1.02rem;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line-strong);padding:8px 2px;border-radius:0;transition:border-color .3s;}
+  .field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 12px) 55%,calc(100% - 7px) 55%;background-size:5px 5px;background-repeat:no-repeat;padding-right:26px;}
+  .field textarea{resize:vertical;min-height:120px;border:1px solid var(--line-strong);padding:10px 12px;}
+  .field input::placeholder{color:rgba(70,63,50,.7);}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--oxblood);outline-offset:2px;border-color:var(--ink);}
+  .field [aria-invalid="true"]{border-color:var(--oxblood);}
+  .form-foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+  .form-notice{font-size:.85rem;color:var(--ink-soft);max-width:52ch;}
+  .form-notice a{text-decoration:underline;text-underline-offset:3px;}
+  .form-submit{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--sand);border:1px solid var(--ink);padding:14px 30px;border-radius:999px;cursor:pointer;transition:background .3s,color .3s;}
+  .form-submit:hover{background:var(--oxblood);border-color:var(--oxblood);}
+  .form-submit:focus-visible{outline:2px solid var(--oxblood);outline-offset:3px;}
+  .form-submit[disabled]{opacity:.6;cursor:wait;}
+  .form-status{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;min-height:1.4em;}
+  .form-status.err{color:var(--oxblood);}
+  .contact-form.done .field,.contact-form.done .form-foot,.contact-form.done .form-intro{display:none;}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  @media (max-width:640px){.contact-form{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -560,6 +583,29 @@
       </div>
       <img class="contact-logo" src="images/logo-full.png" alt="Alu Romero Atelier" width="395" height="400" loading="lazy">
     </div>
+    <form class="contact-form reveal" id="contact-form" action="/contact.php" method="post" novalidate>
+      <p class="form-intro" data-i18n="form.intro">Parlez-nous de votre projet — Alu vous répondra personnellement.</p>
+      <input type="hidden" name="lang" value="fr">
+      <input type="hidden" name="t" value="">
+      <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="field"><label for="f-name" data-i18n="form.name">Nom</label><input id="f-name" name="name" type="text" autocomplete="name" maxlength="100" required></div>
+      <div class="field"><label for="f-email" data-i18n="form.email">Courriel</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="200" required></div>
+      <div class="field"><label for="f-type" data-i18n="form.type">Votre projet</label>
+        <select id="f-type" name="type" required>
+          <option value="" data-i18n="form.type.choose">Choisir…</option>
+          <option value="original" data-i18n="form.type.original">Acquérir une œuvre existante</option>
+          <option value="commission" data-i18n="form.type.commission">Commande sur mesure</option>
+          <option value="trade" data-i18n="form.type.trade">Designer ou architecte</option>
+          <option value="other" data-i18n="form.type.other">Autre</option>
+        </select></div>
+      <div class="field"><label for="f-size" data-i18n="form.size">Dimensions du mur (facultatif)</label><input id="f-size" name="size" type="text" maxlength="100" placeholder="ex. 120 × 90 cm" data-i18n-ph="form.size.ph"></div>
+      <div class="field full"><label for="f-message" data-i18n="form.message">Message</label><textarea id="f-message" name="message" rows="5" minlength="10" maxlength="5000" required></textarea></div>
+      <div class="form-foot full">
+        <p class="form-notice" data-i18n-html="form.notice">Vos renseignements servent uniquement à répondre à votre demande. <a href="/confidentialite/">Politique de confidentialité</a></p>
+        <button type="submit" class="form-submit" data-i18n="form.submit">Envoyer</button>
+      </div>
+      <p class="form-status full" id="form-status" role="status" aria-live="polite"></p>
+    </form>
     <div class="contact-row reveal">
       <div class="contact-item"><div class="eyebrow">INSTAGRAM</div><a class="big" id="ig-link" href="https://www.instagram.com/aluromero.atelier" target="_blank" rel="noopener">@aluromero.atelier</a></div>
       <div class="contact-item"><div class="eyebrow" data-i18n="contact.email">COURRIEL</div><a class="big" id="mail-link" href="mailto:atelier@aluromero.com">atelier@aluromero.com</a></div>
@@ -586,6 +632,7 @@
 // ===== Analytics: GA4 (direct) + Google Tag Manager, both loaded only after opt-in consent (Québec Law 25) =====
 // GA4 runs here via gtag.js — do NOT also add a GA4 tag in GTM (double counting).
 // GTM stays available for other tags (e.g. ad pixels) and receives the same events in the dataLayer.
+const INITIAL_QS = new URLSearchParams(location.search);
 const GA_ID = 'G-VDSLNP4E1G';
 const GTM_ID = 'GTM-5V9V2XJ8';
 window.dataLayer = window.dataLayer || [];
@@ -638,7 +685,7 @@ const I18N = {
     'comm.c3t':'Designers & architectes','comm.c3p':"Les professionnels sont invités à s'informer sur les délais, les éditions et l'installation.",
     'contact.eyebrow':'NOUS ÉCRIRE','contact.title':'Parlons de votre mur.','contact.email':'COURRIEL','contact.studio':'ATELIER','contact.city':'Montréal, Québec',
     'footer.tag':'Étain repoussé — entièrement fait à la main',
-    'meta.desc':'Alu Romero, artiste mexicaine à Montréal. Œuvres en étain repoussé à la main : cœurs sacrés, corps, fleurs.','alt.room':'vue en situation','mail.subject':'Demande via le site — œuvre ou commande','consent.text':'Avec votre accord, nous utilisons Google Analytics pour mesurer la fréquentation du site (pages vues, clics). Rien n\'est activé sans votre consentement.','consent.accept':'Accepter','consent.decline':'Refuser','footer.cookies':'Témoins (cookies)','footer.privacy':'Confidentialité','footer.a11y':'Accessibilité','a11y.toggle':'Appuyez pour voir l\'œuvre en situation.','consent.more':'En savoir plus',
+    'meta.desc':'Alu Romero, artiste mexicaine à Montréal. Œuvres en étain repoussé à la main : cœurs sacrés, corps, fleurs.','alt.room':'vue en situation','mail.subject':'Demande via le site — œuvre ou commande','consent.text':'Avec votre accord, nous utilisons Google Analytics pour mesurer la fréquentation du site (pages vues, clics). Rien n\'est activé sans votre consentement.','consent.accept':'Accepter','consent.decline':'Refuser','footer.cookies':'Témoins (cookies)','footer.privacy':'Confidentialité','form.intro':'Parlez-nous de votre projet — Alu vous répondra personnellement.','form.name':'Nom','form.email':'Courriel','form.type':'Votre projet','form.type.choose':'Choisir…','form.type.original':'Acquérir une œuvre existante','form.type.commission':'Commande sur mesure','form.type.trade':'Designer ou architecte','form.type.other':'Autre','form.size':'Dimensions du mur (facultatif)','form.size.ph':'ex. 120 × 90 cm','form.message':'Message','form.notice':'Vos renseignements servent uniquement à répondre à votre demande. <a href="/confidentialite/">Politique de confidentialité</a>','form.submit':'Envoyer','form.sending':'Envoi…','form.ok':'Merci! Votre message a bien été envoyé. Alu vous répondra sous peu.','form.err':'Le message n\'a pas pu être envoyé. Écrivez-nous directement à atelier@aluromero.com.','form.rate':'Trop d\'envois en peu de temps. Réessayez plus tard ou écrivez à atelier@aluromero.com.','form.invalid':'Vérifiez les champs du formulaire.','footer.a11y':'Accessibilité','a11y.toggle':'Appuyez pour voir l\'œuvre en situation.','consent.more':'En savoir plus',
     'medium.wood':'Étain repoussé sur bois de récupération','medium.panel':'Étain repoussé sur panneau','medium.framed':'Étain repoussé, encadré','medium.beads':'Étain repoussé et perles sur bois'
   },
   es: {
@@ -668,7 +715,7 @@ const I18N = {
     'comm.c3t':'Diseñadores & arquitectos','comm.c3p':'Los profesionales pueden consultar plazos, ediciones e instalación.',
     'contact.eyebrow':'ESCRÍBENOS','contact.title':'Hablemos de tu pared.','contact.email':'CORREO','contact.studio':'TALLER','contact.city':'Montreal, Quebec',
     'footer.tag':'Estaño repujado — hecho por completo a mano',
-    'meta.desc':'Alu Romero, artista mexicana en Montreal. Obras en estaño repujado a mano: corazones sagrados, cuerpos, flores.','alt.room':'vista en un espacio','mail.subject':'Consulta desde el sitio — obra o encargo','consent.text':'Con tu permiso, usamos Google Analytics para medir las visitas al sitio (páginas vistas, clics). No se activa nada sin tu consentimiento.','consent.accept':'Aceptar','consent.decline':'Rechazar','footer.cookies':'Cookies','footer.privacy':'Privacidad','footer.a11y':'Accesibilidad','a11y.toggle':'Pulsa para ver la obra en un espacio.','consent.more':'Más información',
+    'meta.desc':'Alu Romero, artista mexicana en Montreal. Obras en estaño repujado a mano: corazones sagrados, cuerpos, flores.','alt.room':'vista en un espacio','mail.subject':'Consulta desde el sitio — obra o encargo','consent.text':'Con tu permiso, usamos Google Analytics para medir las visitas al sitio (páginas vistas, clics). No se activa nada sin tu consentimiento.','consent.accept':'Aceptar','consent.decline':'Rechazar','footer.cookies':'Cookies','footer.privacy':'Privacidad','form.intro':'Cuéntanos sobre tu proyecto — Alu te responderá personalmente.','form.name':'Nombre','form.email':'Correo','form.type':'Tu proyecto','form.type.choose':'Elegir…','form.type.original':'Adquirir una obra existente','form.type.commission':'Encargo a medida','form.type.trade':'Diseñador/a o arquitecto/a','form.type.other':'Otro','form.size':'Medidas de la pared (opcional)','form.size.ph':'ej. 120 × 90 cm','form.message':'Mensaje','form.notice':'Tus datos se usan únicamente para responder a tu solicitud. <a href="/privacidad/">Política de privacidad</a>','form.submit':'Enviar','form.sending':'Enviando…','form.ok':'¡Gracias! Tu mensaje se envió correctamente. Alu te responderá pronto.','form.err':'No se pudo enviar el mensaje. Escríbenos directamente a atelier@aluromero.com.','form.rate':'Demasiados envíos en poco tiempo. Inténtalo más tarde o escribe a atelier@aluromero.com.','form.invalid':'Revisa los campos del formulario.','footer.a11y':'Accesibilidad','a11y.toggle':'Pulsa para ver la obra en un espacio.','consent.more':'Más información',
     'medium.wood':'Estaño repujado sobre madera recuperada','medium.panel':'Estaño repujado sobre panel','medium.framed':'Estaño repujado, enmarcado','medium.beads':'Estaño repujado y chaquira sobre madera'
   }
 };
@@ -735,6 +782,8 @@ function applyLang(l){
   document.documentElement.lang = l;
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t[el.dataset.i18n] ?? ''; });
   document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t[el.dataset.i18nHtml] ?? ''; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t[el.dataset.i18nPh] ?? ''; });
+  const fl = document.querySelector('#contact-form input[name=lang]'); if (fl) fl.value = l;
   document.querySelectorAll('[data-i18n-alt]').forEach(el => { el.alt = t[el.dataset.i18nAlt] ?? ''; });
   document.querySelectorAll('.piece').forEach(el => { el.querySelector('.meta').textContent = t[el.dataset.mk]; });
   document.querySelectorAll('.lang button').forEach(b => {
@@ -814,6 +863,49 @@ document.querySelectorAll('.piece').forEach(el => {
 // reached the contact section
 const contactIO = new IntersectionObserver(es => { if (es[0].isIntersecting) { track('view_contact'); contactIO.disconnect(); } }, { threshold: .4 });
 contactIO.observe(document.getElementById('contact'));
+
+// ===== Contact form =====
+(() => {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const status = document.getElementById('form-status');
+  const btn = form.querySelector('.form-submit');
+  const T = k => I18N[lang][k];
+  const started = Date.now();
+  const show = (key, err) => { status.textContent = T(key); status.classList.toggle('err', !!err); };
+  // result of a no-JS submission (redirected back with ?form=…)
+  const r = INITIAL_QS.get('form');
+  if (r === 'sent') { form.classList.add('done'); show('form.ok'); }
+  else if (r) show(r === 'rate' ? 'form.rate' : r === 'invalid' ? 'form.invalid' : 'form.err', true);
+
+  form.addEventListener('input', e => {
+    if (e.target.getAttribute('aria-invalid') && e.target.checkValidity()) e.target.removeAttribute('aria-invalid');
+    if (!form.querySelector('[aria-invalid]') && status.classList.contains('err')) { status.textContent = ''; status.classList.remove('err'); }
+  });
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    form.querySelectorAll('[aria-invalid]').forEach(f => f.removeAttribute('aria-invalid'));
+    const bad = [...form.querySelectorAll('input[required], select[required], textarea[required]')].filter(f => !f.checkValidity());
+    if (bad.length) { bad.forEach(f => f.setAttribute('aria-invalid', 'true')); bad[0].focus(); show('form.invalid', true); return; }
+    form.elements.t.value = ((Date.now() - started) / 1000).toFixed(1);
+    btn.disabled = true; btn.textContent = T('form.sending'); status.textContent = '';
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      const data = await res.json().catch(() => ({ ok: false, code: 'error' }));
+      if (data.ok) {
+        form.classList.add('done'); show('form.ok');
+        track('generate_lead', { method: 'form', project_type: form.elements.type.value, link_location: 'contact' });
+        status.setAttribute('tabindex', '-1'); status.focus();
+      } else {
+        show(data.code === 'rate' ? 'form.rate' : data.code === 'invalid' ? 'form.invalid' : 'form.err', true);
+      }
+    } catch (err) {
+      show('form.err', true);
+    } finally {
+      btn.disabled = false; btn.textContent = T('form.submit');
+    }
+  });
+})();
 </script>
 </body>
 </html>
