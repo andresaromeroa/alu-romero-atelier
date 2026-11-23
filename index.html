@@ -577,24 +577,23 @@
 </div>
 
 <script>
-// ===== Analytics: GA4, loaded only after opt-in consent (Québec Law 25) =====
-const GA_ID = 'G-XXXXXXXXXX'; // ← replace with the GA4 Measurement ID
+// ===== Analytics: Google Tag Manager, loaded only after opt-in consent (Québec Law 25) =====
+// GA4 is configured inside the GTM container; events below are pushed to the dataLayer.
+const GTM_ID = 'GTM-5V9V2XJ8';
 window.dataLayer = window.dataLayer || [];
-function gtag(){ dataLayer.push(arguments); }
 const CONSENT_KEY = 'ar_consent';
 const getConsent = () => { try { return localStorage.getItem(CONSENT_KEY); } catch(e) { return null; } };
 const setConsent = v => { try { localStorage.setItem(CONSENT_KEY, v); } catch(e) {} };
 let gaOn = false;
 function loadGA(){
-  if (gaOn || !/^G-[A-Z0-9]{6,}$/.test(GA_ID) || GA_ID === 'G-XXXXXXXXXX') return;
+  if (gaOn || !/^GTM-[A-Z0-9]+$/.test(GTM_ID)) return;
   gaOn = true;
+  dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js', site_language: document.documentElement.lang });
   const s = document.createElement('script');
-  s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  s.async = true; s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
   document.head.appendChild(s);
-  gtag('js', new Date());
-  gtag('config', GA_ID, { page_title: document.title, language: document.documentElement.lang });
 }
-function track(name, params){ if (gaOn) gtag('event', name, params || {}); }
+function track(name, params){ if (gaOn) dataLayer.push(Object.assign({ event: name }, params || {})); }
 
 const I18N = {
   fr: {
