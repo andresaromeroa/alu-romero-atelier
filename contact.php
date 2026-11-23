@@ -41,8 +41,8 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
 }
 
 /* ---- Bot checks: hidden field + minimum fill time (silently "succeed") ---- */
-if (trim((string)($_POST['website'] ?? '')) !== '') { respond(true); }
-if (isset($_POST['t']) && is_numeric($_POST['t']) && (float)$_POST['t'] < 3) { respond(true); }
+if (trim((string)($_POST['ar_hp_note'] ?? '')) !== '') { error_log('contact.php: dropped (hidden field filled)'); respond(true); }
+if (isset($_POST['t']) && is_numeric($_POST['t']) && (float)$_POST['t'] < 3) { error_log('contact.php: dropped (submitted in under 3s)'); respond(true); }
 
 /* ---- Rate limit: 5 submissions per IP per hour ---- */
 $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
