@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aluromero.com/sitemap.xml

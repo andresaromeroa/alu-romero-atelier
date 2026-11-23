@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://aluromero.com/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aluromero.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/"/>
+    <image:image><image:loc>https://aluromero.com/images/el-beso-frame-1400.webp</image:loc></image:image>
+    <image:image><image:loc>https://aluromero.com/images/sagrado-corazon-1400.webp</image:loc></image:image>
+    <image:image><image:loc>https://aluromero.com/images/corazon-anatomico-1400.webp</image:loc></image:image>
+    <image:image><image:loc>https://aluromero.com/images/contemplacion-1400.webp</image:loc></image:image>
+    <image:image><image:loc>https://aluromero.com/images/marea-1400.webp</image:loc></image:image>
+    <image:image><image:loc>https://aluromero.com/images/corazon-floral-1400.webp</image:loc></image:image>
+    <image:image><image:loc>https://aluromero.com/images/alcatraces-room-1400.webp</image:loc></image:image>
+    <image:image><image:loc>https://aluromero.com/images/sinfonia-1400.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://aluromero.com/?lang=es</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aluromero.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/"/>
+  </url>
+</urlset>
