@@ -3,7 +3,8 @@
   <url>
     <loc>https://aluromero.com/</loc>
     <lastmod>2026-11-23</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aluromero.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/?lang=fr"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://aluromero.com/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/"/>
     <image:image><image:loc>https://aluromero.com/images/el-beso-frame-1400.webp</image:loc></image:image>
@@ -16,24 +17,43 @@
     <image:image><image:loc>https://aluromero.com/images/sinfonia-1400.webp</image:loc></image:image>
   </url>
   <url>
-    <loc>https://aluromero.com/?lang=es</loc>
+    <loc>https://aluromero.com/?lang=fr</loc>
     <lastmod>2026-11-23</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aluromero.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/?lang=fr"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://aluromero.com/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/"/>
   </url>
   <url>
-    <loc>https://aluromero.com/confidentialite/</loc>
+    <loc>https://aluromero.com/?lang=es</loc>
     <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aluromero.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aluromero.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/"/>
+  </url>
+  <url>
+    <loc>https://aluromero.com/privacy/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aluromero.com/privacy/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/confidentialite/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://aluromero.com/privacidad/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/privacy/"/>
+  </url>
+  <url>
+    <loc>https://aluromero.com/confidentialite/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aluromero.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aluromero.com/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/privacy/"/>
   </url>
   <url>
     <loc>https://aluromero.com/privacidad/</loc>
     <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aluromero.com/privacy/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://aluromero.com/confidentialite/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://aluromero.com/privacidad/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aluromero.com/privacy/"/>
   </url>
 </urlset>

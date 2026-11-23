@@ -19,7 +19,7 @@ header('X-Content-Type-Options: nosniff');
 header('Cache-Control: no-store');
 
 $wantsJson = stripos($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json') !== false;
-$lang = (($_POST['lang'] ?? '') === 'es') ? 'es' : 'fr';
+$lang = in_array($_POST['lang'] ?? '', ['en', 'fr', 'es'], true) ? $_POST['lang'] : 'en';
 
 function respond(bool $ok, string $code = 'ok', int $status = 200): void {
     global $wantsJson, $lang;
@@ -29,7 +29,7 @@ function respond(bool $ok, string $code = 'ok', int $status = 200): void {
         echo json_encode(['ok' => $ok, 'code' => $code]);
     } else {
         $q = ['form' => $ok ? 'sent' : $code];
-        if ($lang === 'es') { $q = ['lang' => 'es'] + $q; }
+        if ($lang !== 'en') { $q = ['lang' => $lang] + $q; }
         header('Location: /?' . http_build_query($q) . '#contact', true, 303);
     }
     exit;
