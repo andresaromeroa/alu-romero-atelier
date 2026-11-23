@@ -35,6 +35,33 @@ function respond(bool $ok, string $code = 'ok', int $status = 200): void {
     exit;
 }
 
+/* ---- Diagnostic: /contact.php?debug=<debug_token from config> sends a test email and shows the SMTP transcript ---- */
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'GET' && isset($_GET['debug'])) {
+    $cfgPath = dirname(__DIR__) . '/alu-contact-config.php';
+    header('Content-Type: text/plain; charset=utf-8');
+    if (!is_file($cfgPath)) { echo "Config NOT found at: $cfgPath\n"; exit; }
+    $cfg = require $cfgPath;
+    if (empty($cfg['debug_token']) || !hash_equals((string)$cfg['debug_token'], (string)$_GET['debug'])) { http_response_code(404); exit; }
+    echo "Config found at: $cfgPath\nPHP " . PHP_VERSION . "\nSending test to {$cfg['to']} via {$cfg['smtp_host']}:{$cfg['smtp_port']}\n\n";
+    $m = new PHPMailer(true);
+    try {
+        $m->isSMTP(); $m->SMTPDebug = 3; $m->Debugoutput = fn($s) => print($s . "\n");
+        $m->Host = $cfg['smtp_host']; $m->Port = (int)$cfg['smtp_port']; $m->SMTPAuth = (bool)$cfg['smtp_auth'];
+        if ($m->SMTPAuth) { $m->Username = $cfg['smtp_user']; $m->Password = $cfg['smtp_pass']; }
+        $s = $cfg['smtp_secure'] ?? '';
+        if ($s === 'ssl') { $m->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; } elseif ($s === 'tls') { $m->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; } else { $m->SMTPSecure = ''; $m->SMTPAutoTLS = false; }
+        $m->Timeout = 15; $m->CharSet = PHPMailer::CHARSET_UTF8;
+        $m->setFrom($cfg['from'], 'aluromero.com'); $m->addAddress($cfg['to']);
+        $m->Subject = 'Prueba del formulario — ' . date('Y-m-d H:i:s');
+        $m->Body = "Correo de prueba del formulario de aluromero.com.";
+        $m->send();
+        echo "\n=== RESULT: accepted by the SMTP server ===\n";
+    } catch (MailException $e) {
+        echo "\n=== RESULT: FAILED: " . $m->ErrorInfo . " ===\n";
+    }
+    exit;
+}
+
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     header('Location: /#contact', true, 303);
     exit;
