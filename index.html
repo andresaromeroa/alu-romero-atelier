@@ -884,7 +884,10 @@ function applyLang(l){
     b.classList.toggle('on', on); b.setAttribute('aria-pressed', on);
   });
   document.title = TITLES[l];
-  history.replaceState(null,'', (l === 'en' ? location.pathname : location.pathname + '?lang=' + l) + location.hash);
+  // keep every other query parameter (utm_*, gclid, form…) so GA4 still sees campaign tags after consent
+  const u = new URL(location.href);
+  if (l === 'en') u.searchParams.delete('lang'); else u.searchParams.set('lang', l);
+  history.replaceState(null, '', u.pathname + u.search + u.hash);
   // SEO + leads: per-language description, canonical, descriptive alt text, mail subject
   document.querySelector('meta[name="description"]').content = t['meta.desc'];
   let canon = document.querySelector('link[rel="canonical"]');
