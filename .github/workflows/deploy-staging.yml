@@ -1,0 +1,32 @@
+name: Deploy staging preview
+on:
+  push:
+    branches: [staging]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare preview build (noindex, no analytics, preview label)
+        run: |
+          for f in index.html privacy/index.html confidentialite/index.html privacidad/index.html; do
+            sed -i 's#<head>#<head>\n<meta name="robots" content="noindex,nofollow">#' "$f"
+          done
+          sed -i 's#function loadGA(){#function loadGA(){ return; /* staging: analytics off */#' index.html
+          sed -i 's#</body>#<div style="position:fixed;left:12px;top:12px;z-index:9999;background:\#7C231D;color:\#fff;font:11px/1 monospace;letter-spacing:.12em;padding:7px 10px;border-radius:3px;pointer-events:none">PREVIEW</div>\n</body>#' index.html
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          server-dir: ./staging/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            README.md
+            contact.php
+            lib/**
+            robots.txt
+            sitemap.xml
