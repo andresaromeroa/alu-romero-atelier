@@ -97,7 +97,12 @@
     "Mexican devotional art"
    ],
    "url": "https://www.aluromero.com/",
-   "image": "https://www.aluromero.com/images/hero-1400.webp",
+   "image": {
+    "@type": "ImageObject",
+    "url": "https://www.aluromero.com/images/alu-romero-artist-montreal-880.webp",
+    "width": 880,
+    "height": 1100
+   },
    "sameAs": [
     "https://www.instagram.com/aluromero.atelier"
    ],
@@ -394,6 +399,10 @@
   /* ABOUT */
   .about{padding:clamp(90px,12vw,150px) 0;}
   .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,90px);align-items:center;}
+  .about-portrait{margin:36px 0 0;max-width:420px;}
+  .about-portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:2px;box-shadow:0 18px 40px -24px rgba(20,18,16,.45);}
+  .about-portrait figcaption{margin-top:12px;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.22em;color:var(--ink-soft);}
+  @media (max-width:860px){.about-portrait{max-width:360px;}}
   @media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
   .about h2{font-size:clamp(2.1rem,4.6vw,3.4rem);line-height:1.08;}
   .about-copy p{color:var(--ink-soft);font-size:1.03rem;margin-top:18px;}
@@ -553,6 +562,10 @@
     <div class="reveal">
       <div class="eyebrow" data-i18n="about.eyebrow">THE ARTIST</div>
       <h2 data-i18n="about.title">Mexican hands, Montréal light.</h2>
+      <figure class="about-portrait">
+        <img src="images/alu-romero-artist-montreal-880.webp" srcset="images/alu-romero-artist-montreal-480.webp 480w, images/alu-romero-artist-montreal-880.webp 880w" sizes="(max-width:860px) 80vw, 420px" width="880" height="1100" loading="lazy" decoding="async" alt="Portrait of Alu Romero, Mexican artist based in Montréal" data-i18n-alt="about.photo.alt">
+        <figcaption>ALU ROMERO — <span data-i18n="about.photo.cap">ARTIST</span></figcaption>
+      </figure>
     </div>
     <div class="about-copy reveal">
       <p data-i18n="about.p1">Alu Romero is a Mexican artist living and working in Montréal. Her practice explores the poetry of metal through hand-embossed pewter — a slow, entirely manual technique she carries from the Mexican devotional tradition into large-scale contemporary pieces for the wall.</p>
@@ -720,7 +733,7 @@ const I18N = {
     'consent.decline':'Decline',
     'consent.more':'Learn more',
     'footer.cookies':'Cookies',
-    'footer.privacy':'Privacy',
+    'footer.privacy':'Privacy','about.photo.alt':'Portrait of Alu Romero, Mexican artist based in Montréal','about.photo.cap':'ARTIST',
     'footer.a11y':'Accessibility',
     'form.intro':'Tell us about your project — Alu will reply personally.',
     'form.name':'Name',
@@ -774,7 +787,7 @@ const I18N = {
     'comm.c3t':'Designers & architectes','comm.c3p':"Les professionnels sont invités à s'informer sur les délais, les éditions et l'installation.",
     'contact.eyebrow':'NOUS ÉCRIRE','contact.title':'Parlons de votre mur.','contact.email':'COURRIEL','contact.studio':'ATELIER','contact.city':'Montréal, Québec',
     'footer.tag':'Étain repoussé — entièrement fait à la main',
-    'meta.desc':'Alu Romero, artiste mexicaine à Montréal. Œuvres en étain repoussé à la main : cœurs sacrés, corps, fleurs.','alt.room':'vue en situation','mail.subject':'Demande via le site — œuvre ou commande','consent.text':'Avec votre accord, nous utilisons Google Analytics pour mesurer la fréquentation du site (pages vues, clics). Rien n\'est activé sans votre consentement.','consent.accept':'Accepter','consent.decline':'Refuser','footer.cookies':'Témoins (cookies)','footer.privacy':'Confidentialité','form.intro':'Parlez-nous de votre projet — Alu vous répondra personnellement.','form.name':'Nom','form.email':'Courriel','form.type':'Votre projet','form.type.choose':'Choisir…','form.type.original':'Acquérir une œuvre existante','form.type.commission':'Commande sur mesure','form.type.trade':'Designer ou architecte','form.type.other':'Autre','form.size':'Dimensions du mur (facultatif)','form.size.ph':'ex. 120 × 90 cm','form.message':'Message','form.notice':'Vos renseignements servent uniquement à répondre à votre demande. <a href="/confidentialite/">Politique de confidentialité</a>','form.submit':'Envoyer','form.sending':'Envoi…','form.ok':'Merci! Votre message a bien été envoyé. Alu vous répondra sous peu.','form.err':'Le message n\'a pas pu être envoyé. Écrivez-nous directement à atelier@aluromero.com.','form.rate':'Trop d\'envois en peu de temps. Réessayez plus tard ou écrivez à atelier@aluromero.com.','form.invalid':'Vérifiez les champs du formulaire.','footer.a11y':'Accessibilité','a11y.toggle':'Appuyez pour voir l\'œuvre en situation.','consent.more':'En savoir plus',
+    'meta.desc':'Alu Romero, artiste mexicaine à Montréal. Œuvres en étain repoussé à la main : cœurs sacrés, corps, fleurs.','alt.room':'vue en situation','mail.subject':'Demande via le site — œuvre ou commande','consent.text':'Avec votre accord, nous utilisons Google Analytics pour mesurer la fréquentation du site (pages vues, clics). Rien n\'est activé sans votre consentement.','consent.accept':'Accepter','consent.decline':'Refuser','footer.cookies':'Témoins (cookies)','footer.privacy':'Confidentialité','about.photo.alt':'Portrait d\'Alu Romero, artiste mexicaine établie à Montréal','about.photo.cap':'ARTISTE','form.intro':'Parlez-nous de votre projet — Alu vous répondra personnellement.','form.name':'Nom','form.email':'Courriel','form.type':'Votre projet','form.type.choose':'Choisir…','form.type.original':'Acquérir une œuvre existante','form.type.commission':'Commande sur mesure','form.type.trade':'Designer ou architecte','form.type.other':'Autre','form.size':'Dimensions du mur (facultatif)','form.size.ph':'ex. 120 × 90 cm','form.message':'Message','form.notice':'Vos renseignements servent uniquement à répondre à votre demande. <a href="/confidentialite/">Politique de confidentialité</a>','form.submit':'Envoyer','form.sending':'Envoi…','form.ok':'Merci! Votre message a bien été envoyé. Alu vous répondra sous peu.','form.err':'Le message n\'a pas pu être envoyé. Écrivez-nous directement à atelier@aluromero.com.','form.rate':'Trop d\'envois en peu de temps. Réessayez plus tard ou écrivez à atelier@aluromero.com.','form.invalid':'Vérifiez les champs du formulaire.','footer.a11y':'Accessibilité','a11y.toggle':'Appuyez pour voir l\'œuvre en situation.','consent.more':'En savoir plus',
     'medium.wood':'Étain repoussé sur bois de récupération','medium.panel':'Étain repoussé sur panneau','medium.framed':'Étain repoussé, encadré','medium.beads':'Étain repoussé et perles sur bois'
   },
   es: {
@@ -804,7 +817,7 @@ const I18N = {
     'comm.c3t':'Diseñadores & arquitectos','comm.c3p':'Los profesionales pueden consultar plazos, ediciones e instalación.',
     'contact.eyebrow':'ESCRÍBENOS','contact.title':'Hablemos de tu pared.','contact.email':'CORREO','contact.studio':'TALLER','contact.city':'Montreal, Quebec',
     'footer.tag':'Estaño repujado — hecho por completo a mano',
-    'meta.desc':'Alu Romero, artista mexicana en Montreal. Obras en estaño repujado a mano: corazones sagrados, cuerpos, flores.','alt.room':'vista en un espacio','mail.subject':'Consulta desde el sitio — obra o encargo','consent.text':'Con tu permiso, usamos Google Analytics para medir las visitas al sitio (páginas vistas, clics). No se activa nada sin tu consentimiento.','consent.accept':'Aceptar','consent.decline':'Rechazar','footer.cookies':'Cookies','footer.privacy':'Privacidad','form.intro':'Cuéntanos sobre tu proyecto — Alu te responderá personalmente.','form.name':'Nombre','form.email':'Correo','form.type':'Tu proyecto','form.type.choose':'Elegir…','form.type.original':'Adquirir una obra existente','form.type.commission':'Encargo a medida','form.type.trade':'Diseñador/a o arquitecto/a','form.type.other':'Otro','form.size':'Medidas de la pared (opcional)','form.size.ph':'ej. 120 × 90 cm','form.message':'Mensaje','form.notice':'Tus datos se usan únicamente para responder a tu solicitud. <a href="/privacidad/">Política de privacidad</a>','form.submit':'Enviar','form.sending':'Enviando…','form.ok':'¡Gracias! Tu mensaje se envió correctamente. Alu te responderá pronto.','form.err':'No se pudo enviar el mensaje. Escríbenos directamente a atelier@aluromero.com.','form.rate':'Demasiados envíos en poco tiempo. Inténtalo más tarde o escribe a atelier@aluromero.com.','form.invalid':'Revisa los campos del formulario.','footer.a11y':'Accesibilidad','a11y.toggle':'Pulsa para ver la obra en un espacio.','consent.more':'Más información',
+    'meta.desc':'Alu Romero, artista mexicana en Montreal. Obras en estaño repujado a mano: corazones sagrados, cuerpos, flores.','alt.room':'vista en un espacio','mail.subject':'Consulta desde el sitio — obra o encargo','consent.text':'Con tu permiso, usamos Google Analytics para medir las visitas al sitio (páginas vistas, clics). No se activa nada sin tu consentimiento.','consent.accept':'Aceptar','consent.decline':'Rechazar','footer.cookies':'Cookies','footer.privacy':'Privacidad','about.photo.alt':'Retrato de Alu Romero, artista mexicana radicada en Montreal','about.photo.cap':'ARTISTA','form.intro':'Cuéntanos sobre tu proyecto — Alu te responderá personalmente.','form.name':'Nombre','form.email':'Correo','form.type':'Tu proyecto','form.type.choose':'Elegir…','form.type.original':'Adquirir una obra existente','form.type.commission':'Encargo a medida','form.type.trade':'Diseñador/a o arquitecto/a','form.type.other':'Otro','form.size':'Medidas de la pared (opcional)','form.size.ph':'ej. 120 × 90 cm','form.message':'Mensaje','form.notice':'Tus datos se usan únicamente para responder a tu solicitud. <a href="/privacidad/">Política de privacidad</a>','form.submit':'Enviar','form.sending':'Enviando…','form.ok':'¡Gracias! Tu mensaje se envió correctamente. Alu te responderá pronto.','form.err':'No se pudo enviar el mensaje. Escríbenos directamente a atelier@aluromero.com.','form.rate':'Demasiados envíos en poco tiempo. Inténtalo más tarde o escribe a atelier@aluromero.com.','form.invalid':'Revisa los campos del formulario.','footer.a11y':'Accesibilidad','a11y.toggle':'Pulsa para ver la obra en un espacio.','consent.more':'Más información',
     'medium.wood':'Estaño repujado sobre madera recuperada','medium.panel':'Estaño repujado sobre panel','medium.framed':'Estaño repujado, enmarcado','medium.beads':'Estaño repujado y chaquira sobre madera'
   }
 };
